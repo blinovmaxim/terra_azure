@@ -34,7 +34,8 @@ jobs:
       run: echo $AZURE_TENANT_ID
       
     - name: test3
-      run: echo $AZURESUB
+      run: |
+        [ "${{ secrets.AZURESUB }}" == "2" ] && echo "Test Pass" 
       
     - name: test4
       run: echo $ARM_CLIENT_SECRET
