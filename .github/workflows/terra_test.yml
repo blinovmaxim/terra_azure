@@ -6,8 +6,7 @@ on:
       - '.github/workflows/terra_test.yml'
 # on:
 #   workflow_dispatch:
-    
-    
+        
     branches:
       - main
 env:
