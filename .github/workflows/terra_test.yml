@@ -35,7 +35,7 @@ jobs:
       
     - name: test3
       run: |
-        [ "${{ secrets.AZURESUB }}" == "2" ] && echo "Test Pass" 
+        [ "${{ secrets.AZURESUB }}" == "1" ] && echo "Test Pass" 
       
     - name: test4
       run: echo $ARM_CLIENT_SECRET
