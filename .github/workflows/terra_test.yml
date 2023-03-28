@@ -28,7 +28,7 @@ jobs:
       
     - name: test AZURE_CLIENT_ID
       run: |
-        [ "${{ secrets.AZURESUB }}" == "3" ] && echo "Test Pass" 
+        [ "${{ secrets.AZURE_CLIENT_ID }}" == "3" ] && echo "Test Pass" 
       
     - name: test AZURE_TENANT_ID
       run: |
