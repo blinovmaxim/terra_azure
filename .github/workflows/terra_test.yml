@@ -34,7 +34,7 @@ jobs:
       run: echo $AZURE_TENANT_ID
       
     - name: test3
-      run: echo $AZURE_SUBSCRIPTION_ID
+      run: echo $AZURESUB
       
     - name: test4
       run: echo $ARM_CLIENT_SECRET
