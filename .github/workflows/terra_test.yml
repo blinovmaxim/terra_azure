@@ -36,7 +36,7 @@ jobs:
       run: echo $AZURE_SUBSCRIPTION_ID
       
     - name: test4
-      run: echo $AZURE_CLIENT_SECRET   
+      run: echo $ARM_CLIENT_SECRET
       
 
     - name: Create Storage
