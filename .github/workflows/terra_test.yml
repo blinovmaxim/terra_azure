@@ -9,12 +9,12 @@ on:
     
     branches:
       - main
-env:
-  ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-  ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-  ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-  test: ${{ secrets.AZURESUB }}
-  KUBECONFIG: ${{ github.workspace }}/terraform-azure/kubeconfig
+# env:
+#   ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+#   ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+#   ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+#   test: ${{ secrets.AZURESUB }}
+#   KUBECONFIG: ${{ github.workspace }}/terraform-azure/kubeconfig
 jobs:
   terraform-CI:
     runs-on: ubuntu-latest
