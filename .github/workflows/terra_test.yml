@@ -27,13 +27,15 @@ jobs:
     - name: Clon Rep
       uses: actions/checkout@v3  
       
-    - name: test1
-      run: echo $AZURE_CLIENT_ID
+    - name: test AZURE_CLIENT_ID
+      run: |
+        [ "${{ secrets.AZURESUB }}" == "3" ] && echo "Test Pass" 
       
-    - name: test2
-      run: echo $AZURE_TENANT_ID
+    - name: test AZURE_TENANT_ID
+      run: |
+       [ "${{ secrets.AZURESUB }}" == "2" ] && echo "Test Pass" 
       
-    - name: test3
+    - name: test AZURESUB 
       run: |
         [ "${{ secrets.AZURESUB }}" == "1" ] && echo "Test Pass" 
       
