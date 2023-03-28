@@ -27,6 +27,19 @@ jobs:
     steps:
     - name: Clon Rep
       uses: actions/checkout@v3  
+      
+    - name: test1
+      run: echo $AZURE_CLIENT_ID
+      
+    - name: test2
+      run: echo $AZURE_TENANT_ID
+      
+    - name: test3
+      run: echo $AZURE_SUBSCRIPTION_ID
+      
+    - name: test4
+      run: echo $AZURE_CLIENT_SECRET   
+      
 
     - name: Create Storage
       env:
@@ -40,50 +53,50 @@ jobs:
       id: plan
       run: terraform plan
       
-    - name: terraform apply
-      if: "!contains(github.event.head_commit.message, 'destroy')"
-      run: terraform apply -auto-approve
+#     - name: terraform apply
+#       if: "!contains(github.event.head_commit.message, 'destroy')"
+#       run: terraform apply -auto-approve
 
-    - name: Upload kubeconfig artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: kubeconfig
-        path: terraform-azure/kubeconfig 
+#     - name: Upload kubeconfig artifact
+#       uses: actions/upload-artifact@v3
+#       with:
+#         name: kubeconfig
+#         path: terraform-azure/kubeconfig 
       
-    - name: Terraform Destroy
-      if: contains(github.event.head_commit.message, 'destroy')
-      run: terraform destroy -auto-approve
+#     - name: Terraform Destroy
+#       if: contains(github.event.head_commit.message, 'destroy')
+#       run: terraform destroy -auto-approve
 
-  terraform-CD:
-    needs: terraform-CI
-    if: "!contains(github.event.head_commit.message, 'destroy')"
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: terraform-azure
+#   terraform-CD:
+#     needs: terraform-CI
+#     if: "!contains(github.event.head_commit.message, 'destroy')"
+#     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: terraform-azure
 
-    steps:
-    - name: Clon Rep
-      uses: actions/checkout@v3
+#     steps:
+#     - name: Clon Rep
+#       uses: actions/checkout@v3
 
-    - name: Setup kubectl
-      uses: azure/setup-kubectl@v3
+#     - name: Setup kubectl
+#       uses: azure/setup-kubectl@v3
 
-    - name: Download kubeconfig
-      # if: "!contains(github.event.head_commit.message, 'destroy')"
-      uses: actions/download-artifact@v3
-      with:
-        name: kubeconfig
-        path: terraform-azure
+#     - name: Download kubeconfig
+#       # if: "!contains(github.event.head_commit.message, 'destroy')"
+#       uses: actions/download-artifact@v3
+#       with:
+#         name: kubeconfig
+#         path: terraform-azure
    
-    - name: Apply Kubernetes manifest
-      run: kubectl apply -f azure-vote.yml
+#     - name: Apply Kubernetes manifest
+#       run: kubectl apply -f azure-vote.yml
   
-    - name: Wait for 15 seconds()
-      run: sleep 20s
+#     - name: Wait for 15 seconds()
+#       run: sleep 20s
 
-    - name: Check Service
-      run: kubectl get service
+#     - name: Check Service
+#       run: kubectl get service
 
 
 
